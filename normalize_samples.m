@@ -1,4 +1,12 @@
 function [data_norm,factors,refsample]= normalize_samples(data_ini,method,ind_refsample)
+% normalizes samples (rows) of a matrix using a normalization method
+%
+% Input:
+%		data_ini:	data matrix
+% 	method:		'TA': total area normalization
+%							'PQ': probabilistic quotient normalization
+%							'QMEDIAN': quantile equating/normalization
+%		ind_refsample: index of the reference sample(s). Default is the column-wise median of data_ini, i.e., the median spectrum.
 
 factors = nan(size(data_ini,1),1);
 data_norm = nan(size(data_ini));
@@ -18,7 +26,7 @@ switch method
         if nargin < 3
             refsample = nanmedian(data_norm);
         else
-            refsample = nanmedian(data_norm(ind_refsample,:));
+            refsample = nanmedian(data_norm(ind_refsample,:),1);
         end
         quotients = data_norm./(refsample(ones(1,size(data_ini,1)),:));
         for i=1:size(data_ini,1)
