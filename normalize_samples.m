@@ -4,8 +4,8 @@ function [data_norm,factors,refsample]= normalize_samples(data_ini,method,ind_re
 % INPUT:
 %	data_ini        : data matrix
 % 	method          : 'TA': total area normalization
-%			          'PQ': probabilistic quotient normalization
-%	        	      'QMEDIAN': quantile equating/normalization
+%                     'PQ': probabilistic quotient normalization
+%                     'QMEDIAN': quantile equating/normalization
 %	ind_refsample   : a vector containing the index of the reference sample(s). 
 %                     Default is the column-wise median of data_ini, i.e., the median spectrum
 %
