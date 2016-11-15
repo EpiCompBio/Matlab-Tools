@@ -1,12 +1,18 @@
 function [data_norm,factors,refsample]= normalize_samples(data_ini,method,ind_refsample)
 % normalizes samples (rows) of a matrix using a normalization method
 %
-% Input:
-%		data_ini:	data matrix
-% 	method:		'TA': total area normalization
-%							'PQ': probabilistic quotient normalization
-%							'QMEDIAN': quantile equating/normalization
-%		ind_refsample: index of the reference sample(s). Default is the column-wise median of data_ini, i.e., the median spectrum.
+% INPUT:
+%	data_ini        : data matrix
+% 	method          : 'TA': total area normalization
+%			          'PQ': probabilistic quotient normalization
+%	        	      'QMEDIAN': quantile equating/normalization
+%	ind_refsample   : a vector containing the index of the reference sample(s). 
+%                     Default is the column-wise median of data_ini, i.e., the median spectrum
+%
+% OUTPUT:
+%   data_norm       : normalized data matrix
+%   factors         : row vector of normalization factors estimated for each sample
+%   refsample       : row vector of reference sample
 
 factors = nan(size(data_ini,1),1);
 data_norm = nan(size(data_ini));
